@@ -153,3 +153,10 @@ print(proportion(adn_test, seq_test)) # Attendu : None => résultat : None
 
 # Essai avec saisie utilisateur
 print(proportion())
+
+
+print("""
+testl1
+test2 _
+etc.
+""")
