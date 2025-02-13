@@ -74,3 +74,81 @@ for personne in annuaire:
     print(f"Entrée de l'annuaire n° {annuaire.index(personne)}")
     for categorie, donnee in personne.items():
         print(f"{categorie} : {donnee}")
+
+# Exo 01
+
+# Avec des variables de type dictionnaire dans une liste, vous réaliserez un logiciel pour stocker une série d'adresses avec :
+# - désignation
+# - numéro de voie
+# - complément
+# - intitulé de voie
+# - commune
+# - code postal
+# Pour ce faire, vous utiliserez des clés de type string qui représenteront les différentes lignes de l'adresse dans le dictionnaire.
+# Le logiciel devra permettre l'ajout, l'édition, la suppression et la visualisation des données par l'utilisateur.
+
+annuaire_adresse = {}
+
+def gestion_annuaire_adresse():
+    pass
+
+def ajout_adresse(annuaire):
+    print("Ajout d'une adresse, veuillez saisir :")
+    designation = input("- sa désignation : ")
+    numero = input("- son numéro : ")
+    complement = input("- son complément : ")
+    intitule = input("- son intitulé de voie : ")
+    commune = input("- sa commune : ")
+    code_postal = input("- son code postal : ")
+    adresse = { 
+        "Numéro" : numero, 
+        "Complément" : complement,
+        "Intitulé" : intitule,
+        "Commune" : commune,
+        "Code Postal" : code_postal,
+    }
+    annuaire[designation] = adresse
+
+def edition_adresse():
+    pass
+
+def suppression_adresse():
+    pass
+
+def affichage_adresse(annuraire):
+    for designation, adresse in annuaire_adresse.items():
+        print(f"Annuaire d'adresse référencé : {designation}")
+        for categorie, donnee in adresse.items():
+            print("-", categorie, "=>", donnee)
+
+# Essai saisie d'une adresse :
+ajout_adresse(annuaire_adresse)
+
+
+annuaire_adresse_demo = {
+    "Matthieu" :
+        {    
+        "Numéro" : "37", 
+        "Complément" : "",
+        "Intitulé" : "rue coppens",
+        "Commune" : "Hondschoote",
+        "Code Postal" : "59122",
+        },
+    "Dominique" :
+        {    
+        "Numéro" : "11", 
+        "Complément" : "",
+        "Intitulé" : "rue notre damde",
+        "Commune" : "Hazebrouck",
+        "Code Postal" : "59190",
+        }
+        ,
+    "Elodie" :
+        {    
+        "Numéro" : "666", 
+        "Complément" : "Grange",
+        "Intitulé" : "rue sébastopol",
+        "Commune" : "Boeschepe",
+        "Code Postal" : "59299",
+        }
+}
