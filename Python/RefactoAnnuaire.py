@@ -136,12 +136,11 @@ def suppression_adresse(annuaire, designation = None):
         print(f"/!\\ Attention, l'adresse {designation} inexistante!")
 
 # Permet d'afficher toutes les données de l'annuaire : OK
-def afficher_adresse(annuaire, designation = None):
+def afficher_adresse(annuaire: dict, designation = None):
     
     if designation == None:
         
         print("\nAffichage complet de l'annuaire d'adresse : -------------")
-        
         for designation, adresse in annuaire.items():
             print(f"Adresse référencé : {designation}")
             for categorie, donnee in adresse.items():
@@ -164,7 +163,7 @@ def afficher_adresse(annuaire, designation = None):
         print("-----------------------------------------------------------")
 
 # Permet de gérer l'interface IHM de la gestion d'annuaire :
-def gestion_annuaire_adresse(annuaire):
+def gestion_annuaire_adresse(annuaire: dict):
 
     while True:
 
@@ -173,7 +172,7 @@ def gestion_annuaire_adresse(annuaire):
             print("Bienvenue dans votre gestionnaire d'annuaire d'adresse :")
             print("Options disponibles :")
             print("1. Ajouter une adresse.")
-            if 0 < len(annuaire):
+            if (annuaire != {}): # Si le dictionnaire n'est pas vide alors
                 print("2. Modifier une adresse.")
                 print("3. Afficher une adresse (en développement).")
                 print("4. Afficher l'adresse de l'annuaire.") if len(annuaire) == 1 else print(f"4. Afficher les {len(annuaire)} adresse de l'annuaire.")
@@ -187,13 +186,13 @@ def gestion_annuaire_adresse(annuaire):
             case "1":
                 ajouter_adresse(annuaire)
             case "2":
-                edition_adresse(annuaire) if 0 < len(annuaire)  else print("Annuaire vide :/.")
+                edition_adresse(annuaire) if (annuaire == {})  else print("Annuaire vide :/.")
             case "3":
-                afficher_adresse(annuaire, "") if 0 < len(annuaire)  else print("Annuaire vide :/.")
+                afficher_adresse(annuaire, "") if (annuaire == {})  else print("Annuaire vide :/.")
             case "4":
-                afficher_adresse(annuaire) if 0 < len(annuaire)  else print("Annuaire vide :/.")
+                afficher_adresse(annuaire) if (annuaire == {})  else print("Annuaire vide :/.")
             case "5":
-                suppression_adresse(annuaire) if 0 < len(annuaire)  else print("Annuaire vide :/.")
+                suppression_adresse(annuaire) if (annuaire == {})  else print("Annuaire vide :/.")
             case "0":
                 print("<3<3<3 Merci d'avoir utilisé notre gestionnaire <3<3<3")
                 break
