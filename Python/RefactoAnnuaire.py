@@ -18,11 +18,12 @@ liste_categorie = [
     "Commune", 
     "Code postal"
 ]
+
 # annuaire_adresse_demo est un dictionnaire :
 ### Clé => Désignation de l'adresse
 ### Valeur => Dictionnaire "données_adresse"
-########### Clé => chaque élément de [liste_categorie]
-########### Valeur => donnée associé
+############### Clé => chaque élément de [liste_categorie]
+############### Valeur => donnée associé
 annuaire_adresse_demo = {
     "Matthieu" :
         {    
