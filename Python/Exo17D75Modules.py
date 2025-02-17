@@ -91,45 +91,42 @@ import csv
 # - Quitter le programme (Cette action sauvegardera le fichier)
 # Pour éviter tout problème, il est conseillé de ne lire et écrire le fichier qu'une seule fois à l'entrée et la sortie du programme.
 
-# Écriture [écrasement des données]
-
 import os
 
 filename = "secret.txt"
 if not os.path.exists(filename):
     print("Le fichier n'existe pas Oo!")
     if input("Souhaitez-vous le créer ? (o/n) => ").lower() == "o":
-        fichier = open(filename, "w")
-        fichier.write ("Test")
-        fichier.close()
+        with open(filename, "w") as fichier:
+            fichier.write ("Test")
 else:
-    fichier = open(filename, "r")    
-    contenu = (fichier.read())
-    print(f"Le fichier contient : \n{contenu}")
-    
-    # fichier_reader = open(filename, mode="r", encoding="UTF-8") # On peut changer le newline
-    # fichier_writer = open(filename, mode="w", encoding="UTF-8", newline="") # On peut changer le newline
-    # if True:
-    #     print("")
-    #     print("---------------------------")
-    #     print("Options disponibles :")
-    #     print("1. afficher secret.")
-    #     print("2. modifier secret.")
-    #     print("0. quitter le programme.")
-    #     print("---------------------------")
-    # while True:
-        
-    #     user_choice = input("Option sélectionnée => ")
-    #     match user_choice:
-    #         case "1": # voir le secret
-    #             reader = csv.reader(fichier_reader, delimiter=";") # Ouverture du lecteur CSV en lui fournissant le caractère séparateur
-    #             for line in reader:
-    #                 print(line)
-    #         case "2": # modifier le secret
-    #             csv.writer(fichier_writer, delimiter=";").writerow([input("Saisisssez votre nouveau secret => ")])
-    #         case "0": # fermer le fichier
-    #             fichier_reader.close()
-    #             fichier_writer.close()
-    #             break
-    #         case _: # informer d'une erreur de saisie
-    #             print("!!! Erreur de saisie !!!")
+    secret = None
+    while True:
+        if True:
+            print("")
+            print("------------------------------")
+            print("Options disponibles :")
+            print("1. Afficher le secret.")
+            print("2. Modifier le secret.")
+            print("0. Quitter le programme.")
+            print("------------------------------")
+            print("")
+        user_choice = input("Option sélectionnée => ")
+        match user_choice:
+            case "1": # voir le secret
+                if secret == None:
+                    with open(filename, "r", encoding="UTF-8") as fichier:
+                        contenu = (fichier.read())
+                else:
+                    contenu = secret
+                print(f"Votre secret le plus sombre est : \n{contenu}")
+            case "2": # modifier le secret
+                secret = input("Saisisssez votre nouveau secret => ")
+                print(secret)
+            case "0": # fermer le fichier
+                if secret != None:
+                    with open(filename, "w", encoding="UTF-8") as fichier:
+                        fichier.write(secret)
+                break
+            case _: # informer d'une erreur de saisie
+                print("!!! Erreur de saisie !!!")
